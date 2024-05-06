@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mostrar tarjeta al hacer clic</title>
+ 
+</head>
+<body>
+  <ul id="elementos">
+    <li data-tarjeta="tarjeta1">Elemento 1</li>
+    <li data-tarjeta="tarjeta2">Elemento 2</li>
+    <li data-tarjeta="tarjeta3">Elemento 3</li>
+  </ul>
+
+  <div id="tarjeta1" class="tarjeta">Contenido de la tarjeta 1</div>
+  <div id="tarjeta2" class="tarjeta">Contenido de la tarjeta 2</div>
+  <div id="tarjeta3" class="tarjeta">Contenido de la tarjeta 3</div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const elementos = document.querySelectorAll('#elementos li');
+
+      elementos.forEach(elemento => {
+        elemento.addEventListener('mouseover', function() {
+          const tarjetaId = this.getAttribute('data-tarjeta');
+          const tarjetaMostrar = document.getElementById(tarjetaId);
+
+          // Oculta todas las tarjetas
+          document.querySelectorAll('.tarjeta').forEach(tarjeta => {
+            tarjeta.style.display = 'none';
+          });
+
+          // Muestra la tarjeta específica
+          tarjetaMostrar.style.display = 'block';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
